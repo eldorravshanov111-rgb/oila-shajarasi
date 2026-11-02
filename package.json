@@ -1,0 +1,12 @@
+{
+  "name": "oila-shajarasi",
+  "version": "1.2.0",
+  "private": true,
+  "dependencies": {
+    "@capacitor/core": "latest",
+    "@capacitor/android": "latest"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest"
+  }
+}

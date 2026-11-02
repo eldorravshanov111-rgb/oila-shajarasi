@@ -1,0 +1,6 @@
+{
+  "appId": "uz.oilashajarasi.app",
+  "appName": "Oila Shajarasi",
+  "webDir": "www",
+  "android": { "allowMixedContent": false }
+}
