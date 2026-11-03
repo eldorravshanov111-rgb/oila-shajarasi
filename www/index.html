@@ -261,11 +261,10 @@ label.ajchk{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:
 <h2 style="font-size:2rem;margin-bottom:6px">Jonli surat</h2>
 <p class="note" style="margin:0 0 14px">Bitta surat va matn yuklang: surat jonlanib, matnni tabiiy ovoz bilan aytib beradi.</p>
 <p class="note" id="ajlg" style="color:#9b2c2c">Hisobga kiring: bu funksiya faqat ro‘yxatdan o‘tganlar uchun.</p>
-<div id="ajsub" hidden></div>
-<div class="fm" id="ajfm" style="margin-top:0">
+<div class="fm" style="margin-top:0">
 <div><label for="ajp">Shajaradan odam (ixtiyoriy)</label><select id="ajp"></select></div>
 <div><label>Jonlantiriladigan surat</label><div class="tb" style="margin:0;gap:14px"><div class="ajph" id="ajph">Surat yo‘q</div><div style="flex:1 1 180px"><button class="btn" id="ajb" type="button">Surat tanlash</button><p class="note" style="margin:8px 0 0">Yuzi aniq ko‘rinadigan, old tomondan olingan surat tanlang.</p></div></div><input type="file" id="ajf" accept="image/*" hidden></div>
-<div><label for="ajt">Gapiriladigan matn</label><textarea id="ajt" maxlength="400" placeholder="Matnni shu yerga yozing…"></textarea><div class="sub" id="ajc">0 / 400</div></div>
+<div><label for="ajt">Gapiriladigan matn</label><textarea id="ajt" maxlength="600" placeholder="Matnni shu yerga yozing…"></textarea><div class="sub" id="ajc">0 / 600</div></div>
 <div class="ajgr c3"><div><label for="ajl">Til</label><select id="ajl"></select></div><div><label for="ajs">Ovoz jinsi</label><select id="ajs"></select></div><div><label for="aja">Yoshi (ixtiyoriy)</label><input id="aja" inputmode="numeric" maxlength="3" autocomplete="off"></div></div>
 <div class="ajrec" id="ajrec" hidden></div>
 <div class="ajgr"><div><label for="ajv">Ovoz</label><select id="ajv"></select></div><div><label for="ajn">Ohang</label><select id="ajn"></select></div></div>
@@ -690,7 +689,7 @@ A("Keksa insonlar uchun sekinroq va sokin ohang mos.","Для пожилых л�
 A("Vafot etgan yaqinni xotirlash uchun vazmin, tantanali ohang mos.","Для памяти об ушедшем близком подходит сдержанный, торжественный тон.","A measured, solemn tone suits remembering a loved one who has passed away.");
 A("Bu til uchun ovoz mavjud emas.","Для этого языка нет доступных голосов.","No voices are available for this language.");
 A("Avval surat tanlang.","Сначала выберите фото.","Choose a photo first.");
-A("Matn yozing (1–400 belgi).","Напишите текст (1–400 символов).","Write some text (1–400 characters).");
+A("Matn yozing (1–600 belgi).","Напишите текст (1–600 символов).","Write some text (1–600 characters).");
 A("Rozilik belgisini qo‘ying.","Поставьте отметку согласия.","Tick the consent box.");
 A("Yuborilmoqda…","Отправка…","Sending…");
 A("Jonlantirilmoqda… {0} soniya (odatda 30–90 soniya)","Оживление… {0} с (обычно 30–90 с)","Animating… {0}s (usually 30–90s)");
@@ -700,14 +699,6 @@ A("Bu video sun’iy intellekt yordamida yaratilgan. Havola vaqtinchalik: videon
 A("Jonlantirib bo‘lmadi. Yuzi aniq ko‘rinadigan boshqa surat bilan urinib ko‘ring.","Не удалось оживить. Попробуйте другое фото с чётко видимым лицом.","Couldn’t animate it. Try another photo with a clearly visible face.");
 A("Kunlik limit tugadi (kuniga {0} ta). Ertaga qayta urinib ko‘ring.","Дневной лимит исчерпан ({0} в день). Попробуйте завтра.","Daily limit reached ({0} per day). Try again tomorrow.");
 A("Surat juda katta yoki formati noto‘g‘ri.","Фото слишком большое или неверного формата.","The photo is too large or in the wrong format.");
-A("Jonli surat obuna bilan ishlaydi","Живое фото работает по подписке","Living photo works with a subscription");
-A("Shajara va boshqa barcha funksiyalar bepul. Faqat rasmni jonlantirish uchun obuna kerak.","Древо и все остальные функции бесплатны. Подписка нужна только для оживления фото.","The tree and all other features are free. A subscription is needed only to animate photos.");
-A("Obuna bo‘lish","Оформить подписку","Subscribe");
-A("Obuna faol: {0} gacha","Подписка активна до {0}","Subscription active until {0}");
-A("Obuna Android ilovasi orqali rasmiylashtiriladi. Ilova tez orada Play Market’da bo‘ladi.","Подписка оформляется через приложение для Android. Скоро оно появится в Play Маркете.","The subscription is purchased through the Android app. It will be on Google Play soon.");
-A("Bu funksiya uchun obuna kerak.","Для этой функции нужна подписка.","This feature requires a subscription.");
-A("Oylik limit tugadi (oyiga {0} ta video).","Месячный лимит исчерпан ({0} видео в месяц).","Monthly limit reached ({0} videos per month).");
-A("Xato","Ошибка","Error");
 A("Vaqt tugadi. Birozdan keyin qayta urinib ko‘ring.","Время вышло. Попробуйте чуть позже.","Timed out. Please try again a bit later.");
 
 /* Oy nomlari */
@@ -734,7 +725,7 @@ window.__set=l=>{if(!LANGS.includes(l))return;L=l;LS("oila-lang",l);document.doc
 window.__dict=D;
 
 /* ---------- Statik HTML tarjimasi ---------- */
-const DYN=new Set(["st","pf","evl","rl","gg","aub","rs","rbn","dd","cft","ts","ep","ra","rb","fw","nw","gw","gy","fc","nc","lng","ajp","ajl","ajs","ajn","ajv","ajrec","ajm","ajres","ajsub"]);
+const DYN=new Set(["st","pf","evl","rl","gg","aub","rs","rbn","dd","cft","ts","ep","ra","rb","fw","nw","gw","gy","fc","nc","lng","ajp","ajl","ajs","ajn","ajv","ajrec","ajm","ajres"]);
 const SKIP=new Set(["SCRIPT","STYLE","TEXTAREA","NOSCRIPT","CANVAS"]);
 const TN=new WeakMap(),AT=new WeakMap(),ATTRS=["placeholder","aria-label","title","alt"];
 function walk(n){
@@ -1341,8 +1332,7 @@ async function pzOut(kind){const n=q("pzn"),bs=[q("pzd"),q("pzg")];bs.forEach(b=
 q("pzd").onclick=()=>pzOut("pdf");q("pzg").onclick=()=>pzOut("png");
 
 /* ===== Jonli surat (D-ID, Supabase Edge Function orqali) ===== */
-const AJFN="dynamic-api"; // Supabase Edge Function nomi
-const AJ={img:null,ok:null,rec:null,sub:null};
+const AJ={img:null,ok:null,rec:null};
 const AJV={uz:[["uz-UZ-MadinaNeural","F","Madina"],["uz-UZ-SardorNeural","M","Sardor"]],ru:[["ru-RU-SvetlanaNeural","F","Svetlana"],["ru-RU-DariyaNeural","F","Dariya"],["ru-RU-DmitryNeural","M","Dmitry"]],en:[["en-US-JennyNeural","F","Jenny"],["en-US-AriaNeural","F","Aria"],["en-US-GuyNeural","M","Guy"],["en-US-DavisNeural","M","Davis"]]};
 const AJT=[["warm","Iliq"],["solemn","Tantanali"],["calm","Sokin"]];
 const ajLang=()=>{const l=__lang();return l==="ru"?"ru":l==="en"?"en":"uz"};
@@ -1374,21 +1364,12 @@ function ajFill(){
  ajRec()}
 function ajSetImg(d){AJ.img=d;q("ajph").innerHTML=`<img src="${d}" alt="">`}
 async function ajLoadVoices(){if(AJ.ok!==null||!user)return;
- try{const r=await SB.functions.invoke(AJFN,{body:{action:"voices"}});if(!r.error&&r.data&&Array.isArray(r.data.voices)){AJ.ok=r.data.voices;ajFill()}}catch(e){}}
-async function ajSubLoad(){AJ.sub=null;if(!user)return;
- try{const r=await SB.from("subscriptions").select("status,expires_at").eq("user_id",user.id).maybeSingle();
-  if(r.data&&r.data.status==="active"&&new Date(r.data.expires_at)>new Date())AJ.sub=r.data.expires_at}catch(e){}}
-function ajGate(){const on=!!AJ.sub,li=!!user;q("ajfm").hidden=li&&!on;q("ajsub").hidden=!li;
- q("ajsub").innerHTML=on?`<p class="note" style="color:var(--forest);margin:0 0 10px">${esc(__("Obuna faol: {0} gacha",new Date(AJ.sub).toLocaleDateString(document.documentElement.lang)))}</p>`
- :`<div class="ajrec" style="margin-bottom:12px"><b>${__("Jonli surat obuna bilan ishlaydi")}</b><div class="sub" style="margin:4px 0 10px">${__("Shajara va boshqa barcha funksiyalar bepul. Faqat rasmni jonlantirish uchun obuna kerak.")}</div><button class="btn p" type="button" id="ajsb">${__("Obuna bo‘lish")}</button></div>`}
-q("ajsub").onclick=async e=>{if(e.target.id!=="ajsb")return;
- if(window.oilaSubscribe){try{await window.oilaSubscribe();await ajSubLoad();ajGate()}catch(x){console.error(x)}}
- else toast("Obuna Android ilovasi orqali rasmiylashtiriladi. Ilova tez orada Play Market’da bo‘ladi.")};
-window.__ajInit=async()=>{q("ajlg").hidden=!!user;ajFill();await ajSubLoad();ajGate();ajLoadVoices()};
+ try{const r=await SB.functions.invoke("animate",{body:{action:"voices"}});if(!r.error&&r.data&&Array.isArray(r.data.voices)){AJ.ok=r.data.voices;ajFill()}}catch(e){}}
+window.__ajInit=()=>{q("ajlg").hidden=!!user;ajFill();ajLoadVoices()};
 window.__ajRelang=()=>{if(!q("p5").hidden)ajFill()};
 q("ajb").onclick=()=>q("ajf").click();
 q("ajf").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;try{ajSetImg(await shrink(f,1024))}catch(x){ajMsg(__("Bu suratni o‘qib bo‘lmadi."))}};
-q("ajt").oninput=()=>{q("ajc").textContent=q("ajt").value.length+" / 400"};
+q("ajt").oninput=()=>{q("ajc").textContent=q("ajt").value.length+" / 600"};
 q("ajs").onchange=()=>{ajPick();ajRec()};
 q("ajl").onchange=()=>{ajFill();ajPick();ajRec()};
 q("aja").oninput=ajRec;
@@ -1400,25 +1381,23 @@ q("ajp").onchange=async()=>{const id=q("ajp").value;if(!id||!P[id]){ajRec();retu
 function ajShow(url){q("ajres").innerHTML=`<video class="ajvd" controls playsinline autoplay src="${esc(url)}"></video><div class="tb" style="margin:10px 0 0"><a class="btn p" href="${esc(url)}" target="_blank" rel="noopener" download>${__("Videoni yuklab olish")}</a></div><p class="note">${__("Bu video sun’iy intellekt yordamida yaratilgan. Havola vaqtinchalik: videoni yuklab oling.")}</p>`}
 async function ajErr(x){let b=null;try{b=x&&x.context&&await x.context.json()}catch(e){}
  const c=b&&b.error;
- if(c==="subscription"){AJ.sub=null;ajGate();return __("Bu funksiya uchun obuna kerak.")}
- if(c==="limit")return b.period==="month"?__("Oylik limit tugadi (oyiga {0} ta video).",b.limit||8):__("Kunlik limit tugadi (kuniga {0} ta). Ertaga qayta urinib ko‘ring.",b.limit||1);
+ if(c==="limit")return __("Kunlik limit tugadi (kuniga {0} ta). Ertaga qayta urinib ko‘ring.",b.limit||5);
  if(c==="image")return __("Surat juda katta yoki formati noto‘g‘ri.");
- if(c==="text")return __("Matn yozing (1–400 belgi).");
+ if(c==="text")return __("Matn yozing (1–600 belgi).");
  if(c==="consent")return __("Rozilik belgisini qo‘ying.");
  if(c==="voice")return __("Bu til uchun ovoz mavjud emas.");
- if(c)return __("Xato")+": "+c+(b.step?"/"+b.step:"")+(b.status?" "+b.status:"")+(b.detail?" — "+String(b.detail).slice(0,220):"");
  if(x&&x.name==="FunctionsHttpError")return __("Jonlantirib bo‘lmadi. Yuzi aniq ko‘rinadigan boshqa surat bilan urinib ko‘ring.");
  return tr(x)}
 q("ajg").onclick=async()=>{
  if(!user){ajMsg(__("Hisobga kiring: bu funksiya faqat ro‘yxatdan o‘tganlar uchun."));open_(false);return}
  const text=q("ajt").value.trim(),voice=q("ajv").value;
  if(!AJ.img){ajMsg(__("Avval surat tanlang."));return}
- if(!text||text.length>400){ajMsg(__("Matn yozing (1–400 belgi)."));return}
+ if(!text||text.length>600){ajMsg(__("Matn yozing (1–600 belgi)."));return}
  if(!voice){ajMsg(__("Bu til uchun ovoz mavjud emas."));return}
  if(!q("ajk").checked){ajMsg(__("Rozilik belgisini qo‘ying."));return}
  const b=q("ajg");b.disabled=true;q("ajres").innerHTML="";ajMsg(__("Yuborilmoqda…"),1);
  try{
-  const r=await SB.functions.invoke(AJFN,{body:{action:"create",image:AJ.img,text,voice,tone:q("ajn").value,consent:true}});
+  const r=await SB.functions.invoke("animate",{body:{action:"create",image:AJ.img,text,voice,tone:q("ajn").value,consent:true}});
   if(r.error)throw r.error;const id=r.data&&r.data.id;if(!id)throw new Error("no id");
   const t0=Date.now();
   for(;;){
@@ -1426,7 +1405,7 @@ q("ajg").onclick=async()=>{
    const sec=Math.round((Date.now()-t0)/1000);
    if(sec>240){ajMsg(__("Vaqt tugadi. Birozdan keyin qayta urinib ko‘ring."));break}
    ajMsg(__("Jonlantirilmoqda… {0} soniya (odatda 30–90 soniya)",sec),1);
-   const g=await SB.functions.invoke(AJFN,{body:{action:"get",id}});if(g.error)throw g.error;
+   const g=await SB.functions.invoke("animate",{body:{action:"get",id}});if(g.error)throw g.error;
    const s=g.data&&g.data.status;
    if(s==="done"&&g.data.url){ajShow(g.data.url);ajMsg(__("Tayyor!"),1);break}
    if(s==="error"||s==="rejected"){console.error(g.data);ajMsg(__("Jonlantirib bo‘lmadi. Yuzi aniq ko‘rinadigan boshqa surat bilan urinib ko‘ring."));break}
