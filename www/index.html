@@ -17,7 +17,7 @@
 <meta name="apple-mobile-web-app-title" content="Oila Shajarasi">
 <meta property="og:image" content="/og.png">
 <script>if("serviceWorker"in navigator&&location.protocol==="https:")addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));</script>
-<script>window.OILA_GOOGLE=false; /* Google OAuth sozlangach true qiling */</script>
+<script>window.OILA_SITE="https://oila-shajarasi.eldorravshanov111.workers.dev";window.OILA_BACK=function(){var h=location.hostname;return(h==="localhost"||h==="127.0.0.1"||location.protocol!=="https:")?window.OILA_SITE:location.href.split("#")[0]};window.OILA_GOOGLE=false; /* Google OAuth sozlangach true qiling */</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--ivory:#F8F5EF;--forest:#243D32;--gold:#B89A62;--ink:#282A27;--sand:#EEE8DC;--line:#d9d0bd;--mute:#6b6a62;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
@@ -1259,7 +1259,7 @@ const onBx=async e=>{const t=e.target.closest("button");if(!t)return;
  if(t.dataset.t){tid=t.dataset.t;lsS("oila-tree",tid);label();viewAcc();await cloudLoad();return}
  if(t.dataset.fp){const em=(q("aue")||{value:""}).value.trim();if(!em){msg("Avval email manzilingizni kiriting.");return}
   t.disabled=true;msg("Kuting…",1);
-  try{const{error}=await SB.auth.resetPasswordForEmail(em,{redirectTo:location.href.split("#")[0]});if(error)throw error;msg("Parolni tiklash havolasi emailingizga yuborildi. Pochtani (Spam papkasini ham) tekshiring.",1)}
+  try{const{error}=await SB.auth.resetPasswordForEmail(em,{redirectTo:window.OILA_BACK()});if(error)throw error;msg("Parolni tiklash havolasi emailingizga yuborildi. Pochtani (Spam papkasini ham) tekshiring.",1)}
   catch(x){msg(tr(x))}finally{t.disabled=false}return}
  if(t.id==="anpb"){const pw=q("anp").value;if(pw.length<6){msg("Parol kamida 6 ta belgidan iborat bo‘lsin.");return}
   t.disabled=true;msg("Kuting…",1);
@@ -1498,7 +1498,7 @@ function viewWho(first){const ks=Object.keys(P);if(!ks.length){viewAcc();return}
 bx.addEventListener("input",e=>{if(e.target.id!=="awq")return;const v=e.target.value.trim().toLowerCase();q("awl").querySelectorAll("button").forEach(b=>{b.style.display=b.textContent.toLowerCase().includes(v)?"":"none"})});
 window.OilaAuth={get user(){return user},get SB(){return SB},get tid(){return tid},get trees(){return trees},cur:()=>cur(),
  login:()=>viewAuth(),who:()=>viewWho(false),me:meGet,setMe,setUser:u=>{user=u},
- google:()=>SB.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.href.split("#")[0]}}),
+ google:()=>SB.auth.signInWithOAuth({provider:"google",options:{redirectTo:window.OILA_BACK()}}),
  signOut:async()=>{try{await SB.auth.signOut()}catch(e){}location.reload()}};
 async function backupTree(){
  const T=tid;if(!T)throw new Error(__("Shajara tanlanmagan"));
