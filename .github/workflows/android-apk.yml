@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 21 }
       - run: bash scripts/prepare-android.sh
+      - name: Ilova ikonkasini yangilash
+        run: npx --yes @capacitor/assets generate --android --assetPath assets --iconBackgroundColor '#203F2F' --iconBackgroundColorDark '#203F2F'
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
